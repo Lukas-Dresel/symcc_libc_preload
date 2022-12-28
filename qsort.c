@@ -26,6 +26,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "symbolize.h"
+
 /* Byte-wise swap two items of size SIZE. */
 #define SWAP(a, b, size)                                                      \
   do                                                                          \
@@ -251,7 +253,7 @@ _quicksort (void *const pbase, size_t total_elems, size_t size, __compar_r_fn_t 
   }
 }
 
-void qsort_r(void *base, size_t nmemb, size_t size, __compar_r_fn_t cmp, void* arg) {
+void SYM(qsort_r)(void *base, size_t nmemb, size_t size, __compar_r_fn_t cmp, void* arg) {
     _quicksort(base, nmemb, size, cmp, arg);
 }
 
@@ -262,6 +264,6 @@ int __qsort_single(const void* first, const void* second, void* arg) {
     return cmp(first, second);
 }
 
-void qsort(void *base, size_t nmemb, size_t size, __compar_fn_t cmp) {
+void SYM(qsort)(void *base, size_t nmemb, size_t size, __compar_fn_t cmp) {
     _quicksort(base, nmemb, size, __qsort_single, cmp);
 }

@@ -1,12 +1,13 @@
 #include <sys/types.h>
 #include <stddef.h>
 
+#include "symbolize.h"
+
 // from /usr/include/x86_64-linux-gnu/bits/stdlib-bsearch.h
 
 typedef int (*__compar_fn_t) (const void *, const void *);
 
-void *
-bsearch (const void *__key, const void *__base, size_t __nmemb, size_t __size,
+void * SYM(bsearch) (const void *__key, const void *__base, size_t __nmemb, size_t __size,
 	 __compar_fn_t __compar)
 {
   size_t __l, __u, __idx;
