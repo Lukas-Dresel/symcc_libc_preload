@@ -142,10 +142,10 @@ _quicksort (void *const pbase, size_t total_elems, size_t size, __compar_r_fn_t 
              that this algorithm runs much faster than others. */
           do
             {
-              while ((*cmp) ((void *) left_ptr, (void *) mid, arg) < 0)
+              while ((void*)left_ptr != (void*)mid && (*cmp) ((void *) left_ptr, (void *) mid, arg) < 0)
                 left_ptr += size;
 
-              while ((*cmp) ((void *) mid, (void *) right_ptr, arg) < 0)
+              while ((void*)mid != (void*)right_ptr && (*cmp) ((void *) mid, (void *) right_ptr, arg) < 0)
                 right_ptr -= size;
 
               if (left_ptr < right_ptr)
