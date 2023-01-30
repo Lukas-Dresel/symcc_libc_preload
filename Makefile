@@ -3,10 +3,10 @@
 all: libc_symcc_preload.so libc_symcc_preload.a
 
 bsearch.o: bsearch.c
-	$(CC) $(CFLAGS) -DSYMBOLIZED -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 qsort.o: qsort.c
-	$(CC) $(CFLAGS) -DSYMBOLIZED -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $<
 
 libc_symcc_preload.so: bsearch.o qsort.o
 	$(CC) $(CFLAGS) -shared -o $@ $^
